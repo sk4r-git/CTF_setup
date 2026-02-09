@@ -1,0 +1,4 @@
+#!/bin/sh
+as --32  $1.S -o $1.o
+ld -m elf_i386 $1.o -o $1
+objdump -d $1 | tail -n+8 | awk -F ":" '{print $2}' | awk -F "  " '{print $1}'| awk -F "\t" '{print $2}' | tr -d [:blank:] | tr -d \\n | fold -b2 | sed -s 's/^/\\x/g' | tr -d \\n
