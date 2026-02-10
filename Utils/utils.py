@@ -1,4 +1,15 @@
 import subprocess
+from pwn import *
+
+rand_null_tab = []
+rand_time_null_tab = []
+rnt = process(["./rand_null", "10000"])
+rtnt = process(["./rand_time_null", "10000"])
+for i in range(10000):
+    rand_null_tab.append(int(rnt.recvuntil(b'\n')[:-1]))
+    rand_time_null_tab.append(int(rtnt.recvuntil(b'\n')[:-1]))
+rnt.close()
+rtnt.close()
 
 class Prog():
     pid = 0

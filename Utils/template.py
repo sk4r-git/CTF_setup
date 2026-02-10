@@ -4,7 +4,7 @@ import os
 from utils import *
 from file_struct import *
 
-CHALL_NAME = "./"
+CHALL_NAME = "/bin/ls"
 final = 0
 debug = 0
 
@@ -30,16 +30,42 @@ def debug():
 
 libc_path = "./" + subprocess.run("ls | grep -E \"^libc\"", shell=True, capture_output=True).stdout.decode().strip()
 ld_path = "./" + subprocess.run("ls | grep -E \"^ld\"", shell=True, capture_output=True).stdout.decode().strip()
-
+env = {}
+if not final:
+    env["xxx"] = "yyy"
 exe = context.binary = ELF(CHALL_NAME, checksec=False)
-libc = ELF(libc_path, checksec=False)
-ld   = ELF(ld_path, checksec=False)
+try:
+    libc = ELF(libc_path, checksec=False)
+    ld   = ELF(ld_path, checksec=False)
+except:
+    print("no libs")
 
 if final == 1:
     io = remote("", 0)
 else:
-    io = process(CHALL_NAME)
+    io = process()
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+''' let's pwn '''
+
+
+''' end '''
 
 
 if debug and not final:

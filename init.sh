@@ -14,10 +14,10 @@ echo "  a zip file"
 echo "  a binary with libc"
 echo "  a binary with docker"
 
-sh=$SHELL
-sh2=$(basename $sh)
-pwd=$PWD
-rc="~/.${sh2}rc"
-echo "export PATH=\$PATH:$pwd/Utils" >> $rc
+# sh=$SHELL
+# sh2=$(basename $sh)
+# pwd=$PWD
+# rc="~/.${sh2}rc"
+# echo "export PATH=\$PATH:$pwd/Utils" >> $rc
 # rm -rf ./.git*
 # rm gitp
