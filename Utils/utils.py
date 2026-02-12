@@ -1,15 +1,30 @@
 import subprocess
+import os
 from pwn import *
 
-rand_null_tab = []
-rand_time_null_tab = []
-rnt = process(["./rand_null", "10000"])
-rtnt = process(["./rand_time_null", "10000"])
-for i in range(10000):
-    rand_null_tab.append(int(rnt.recvuntil(b'\n')[:-1]))
-    rand_time_null_tab.append(int(rtnt.recvuntil(b'\n')[:-1]))
-rnt.close()
-rtnt.close()
+
+def get_rand_null(n):
+    rand_null_tab = []
+    cwd = os.getcwd()
+    os.chdir(os.path.dirname(os.path.abspath(__file__)))
+    rnt = process(["./rand_null", str(n)])
+    for i in range(n):
+        rand_null_tab.append(int(rnt.recvuntil(b'\n')[:-1]))
+    rnt.close()
+    os.chdir(cwd)
+    return rand_null_tab
+
+def get_rand_time_null(n):
+    rand_null_tab = []
+    cwd = os.getcwd()
+    os.chdir(os.path.dirname(os.path.abspath(__file__)))
+    rnt = process(["./rand_time_null", str(n)])
+    for i in range(n):
+        rand_null_tab.append(int(rnt.recvuntil(b'\n')[:-1]))
+    rnt.close()
+    os.chdir(cwd)
+    return rand_null_tab
+    
 
 class Prog():
     pid = 0

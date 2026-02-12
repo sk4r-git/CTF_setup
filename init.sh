@@ -14,6 +14,13 @@ echo "  a zip file"
 echo "  a binary with libc"
 echo "  a binary with docker"
 
+# need
+# patchelf
+# pwninit
+# one_gadget
+# elfutils
+# binutils
+
 # sh=$SHELL
 # sh2=$(basename $sh)
 # pwd=$PWD
