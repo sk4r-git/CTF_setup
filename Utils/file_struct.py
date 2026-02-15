@@ -141,3 +141,43 @@ class FileStruct:
 
 
 
+    def pretty(self):
+        fields = [
+            ("flag", self.flag),
+            ("rptr", self.rptr),
+            ("rend", self.rend),
+            ("rbase", self.rbase),
+            ("wbase", self.wbase),
+            ("wptr", self.wptr),
+            ("wend", self.wend),
+            ("bbase", self.bbase),
+            ("bend", self.bend),
+            ("sbase", self.sbase),
+            ("backbase", self.backbase),
+            ("send", self.send),
+            ("mark", self.mark),
+            ("chain", self.chain),
+            ("fileno", self.fileno),
+            ("flags2", self.flags2),
+            ("old_off", self.old_off),
+            ("cur_col", self.cur_col),
+            ("vo", self.vo),
+            ("shortb", self.shortb),
+            ("lock", self.lock),
+            ("off", self.off),
+            ("code", self.code),
+            ("wide", self.wide),
+            ("flist", self.flist),
+            ("fbuf", self.fbuf),
+            ("pad", self.pad),
+            ("mod", self.mod),
+            ("vtable", self.vtable),
+        ]
+
+        print("==== FILE STRUCT ====")
+        for name, val in fields:
+            if isinstance(val, int):
+                print(f"{name:10} : 0x{val:016x}")
+            else:
+                print(f"{name:10} : {val}")
+        print("=====================")
