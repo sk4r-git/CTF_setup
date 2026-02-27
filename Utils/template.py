@@ -10,7 +10,6 @@ from file_struct import *
 context.binary = exe
 
 final = 0
-debug = 0
 
 enc = lambda a: a.encode() if isinstance(a, str) else a
 sla = lambda a, b: io.sendlineafter(enc(a), enc(b))
@@ -36,14 +35,13 @@ if final == 1:
 else:
     io = process()
 
-
-
 ''' let's pwn '''
+
+
 
 
 ''' end '''
 
-
-if debug and not final:
+if not final:
     debug()
 io.interactive()
