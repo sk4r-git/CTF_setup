@@ -25,6 +25,16 @@ def get_rand_time_null(n):
     os.chdir(cwd)
     return rand_null_tab
     
+def get_rand_n(n, m):
+    rand_null_tab = []
+    cwd = os.getcwd()
+    os.chdir(os.path.dirname(os.path.abspath(__file__)))
+    rnt = process(["./rand_time_null", str(n), str(m)])
+    for i in range(n):
+        rand_null_tab.append(int(rnt.recvuntil(b'\n')[:-1]))
+    rnt.close()
+    os.chdir(cwd)
+    return rand_null_tab
 
 class Prog():
     pid = 0
