@@ -30,7 +30,7 @@ def get_rand_n(n, m):
     cwd = os.getcwd()
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
     rnt = process(["./rand_n", str(n), str(m+1)])
-    for i in range(n):
+    for i in range(m):
         rand_null_tab.append(int(rnt.recvuntil(b'\n')[:-1]))
     rnt.close()
     os.chdir(cwd)
